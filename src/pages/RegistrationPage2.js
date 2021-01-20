@@ -1,70 +1,111 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 
 // import Component
 import HeaderPage from '../components/HeaderPage'
+const errVal = {
+    borderWidth: 1,
+    borderColor: 'red'
+}
+const RegistrationPage2 = (props) => {
+    const [userData, addUserData] = useState(props.route.params)
+    const [name, changeName] = useState()
+    const [email, changeEmail] = useState()
+    const [password, changePassword] = useState()
+    const [conPass, changeConPass] = useState()
 
-const RegistrationPage2 = () => {
+    const [nf, cNf] = useState(null)
+    const [ef, cEf] = useState(null)
+    const [pf, cPf] = useState(null)
+    const [cpf, cCpf] = useState(null)
     return (
-        <View style={styles.container}>
-            <HeaderPage title="Registration"/>
-            
-            <Text style={styles.instText}>
+        <ScrollView>
+            <View style={styles.container}>
+                <HeaderPage title="Registration"/>
+                
+                <Text style={styles.instText}>
                     Create your account in just few easy steps
-            </Text>
+                </Text>
 
-            <View style={styles.head_btn_div}>
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        USERNAME <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter username here... '   
-                    />
+                <View style={styles.head_btn_div}>
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            USERNAME <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            onChangeText = {(text)=>{changeName(text)}}
+                            style={[styles.loginField, nf]}
+                            placeholder='Enter username here... '   
+                        />
+                    </View>
+
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            EMAIL <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            onChangeText = {(text)=>{changeEmail(text)}}
+                            style={[styles.loginField, ef]}
+                            placeholder='Enter email here...'
+                            keyboardType={"email-address"}
+                        />
+                    </View>
+
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            PASSWORD <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            onChangeText = {(text)=>{changePassword(text)}}
+                            style={[styles.loginField, pf]}
+                            placeholder='Enter Password...'
+                            secureTextEntry={true}
+                        />
+                    </View>
+
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            CONFIRM PASSWORD <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            onChangeText = {(text)=>{changeConPass(text)}}
+                            style={[styles.loginField, cpf]}
+                            placeholder='Enter Again Password...'
+                            secureTextEntry={true}
+                        />
+                    </View>
                 </View>
 
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        EMAIL <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter email here...'
-                        keyboardType={"email-address"}
-                    />
+                <View style={styles.btnLoc}>
+                    <TouchableOpacity onPress={() => {
+                            name === undefined 
+                            && cNf(errVal)
+                            email === undefined 
+                            && cEf(errVal)
+                            password === undefined 
+                            && cPf(errVal)
+                            conPass === undefined 
+                            && cCpf(errVal)  
+                            
+                            password !== conPass ? alert("Passwords are not match") :
+                            name !== undefined 
+                            && email !== undefined 
+                            && password !== undefined 
+                            && conPass !== undefined 
+                            && props.navigation.navigate('reg_bio', {...userData, username: name, email: email, password: password})
+                               
+                            
+                        }} 
+                        style={styles.sinBtn}
+                    >
+                        <Text style={styles.btn_sigin}>
+                            NEXT
+                        </Text>
+                    </TouchableOpacity>
                 </View>
 
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        PASSWORD <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter Password numher password'
-                    />
-                </View>
-
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        CONFIRM PASSWORD <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter Again Password...'
-                    />
-                </View>
             </View>
-
-            <View style={styles.btnLoc}>
-                <TouchableOpacity style={styles.sinBtn}>
-                    <Text style={styles.btn_sigin}>
-                        NEXT
-                    </Text>
-                </TouchableOpacity>
-            </View>
-
-        </View>
+        </ScrollView>
     )
 }
 

@@ -1,40 +1,58 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 
 // import Component
 import HeaderPage from '../components/HeaderPage'
 
-const RegistrationPage1 = () => {
+const errVal = {
+    borderWidth: 1,
+    borderColor: 'red'
+}
+const RegistrationPage1 = (props) => {
+    const [contactNumber, numChng] = useState()
+    const [err, errStatus] = useState(null)
+
     return (
-        <View style={styles.container}>
-            <HeaderPage title="Registration"/>
-            
-            <Text style={styles.instText}>
+        <ScrollView>
+            <View style={styles.container}>
+                <HeaderPage title="Registration"/>
+                
+                <Text style={styles.instText}>
                     Enter your phone number for registration
-            </Text>
+                </Text>
 
-            <View style={styles.head_btn_div}>
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        YOUR PHONE <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter Phone number'
-                        keyboardType={"phone-pad"}
-                    />
+                <View style={styles.head_btn_div}>
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            YOUR PHONE <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            value={contactNumber}
+                            onChangeText={(text)=>{numChng(text)}}
+                            style={[styles.loginField, err]}
+                            placeholder='Enter Phone number'
+                            keyboardType={"phone-pad"}
+                        />
+                    </View>
                 </View>
-            </View>
 
-            <View style={styles.btnLoc}>
-                <TouchableOpacity style={styles.sinBtn}>
-                    <Text style={styles.btn_sigin}>
-                        CONTINUE
-                    </Text>
-                </TouchableOpacity>
-            </View>
+                <View style={styles.btnLoc}>
+                    <TouchableOpacity 
+                        onPress={() => {
+                            contactNumber ? 
+                            props.navigation.navigate('reg_credential', {number: contactNumber}) :
+                            errStatus(errVal)
+                        }} 
+                        style={styles.sinBtn}
+                    >
+                        <Text style={styles.btn_sigin}>
+                            CONTINUE
+                        </Text>
+                    </TouchableOpacity>
+                </View>
 
-        </View>
+            </View>
+        </ScrollView>
     )
 }
 
@@ -93,7 +111,7 @@ const styles = StyleSheet.create({
         alignContent: 'center'
       },
       btnLoc: {
-        marginTop: 130,
+        marginTop: 100,
         alignItems: 'center',
         margin: 20
     }

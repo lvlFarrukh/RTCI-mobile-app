@@ -8,9 +8,9 @@ const HeaderPage = ({title}) => {
                 source={require('../media/logo-c.png')}
                 style={styles.headLogo}
             />
-            {/* <Text style={styles.headTxt}>
+            <Text style={styles.headTxt}>
                 {title}
-            </Text> */}
+            </Text>
         </View>
     )
 }

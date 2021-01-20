@@ -21,6 +21,7 @@ const Navigation = () => {
                     name="Login" 
                     component={Login} 
                     options={{
+                        headerShown: false,
                         title: 'Login',
                         headerStyle: {
                           backgroundColor: '#9FE5FF',
@@ -34,10 +35,60 @@ const Navigation = () => {
                 />
 
                 <Stack.Screen 
-                    name="Registration" 
+                    name="register_number" 
                     component={RegistrationPage1} 
                     options={{
-                        title: 'RegistrationPage1',
+                        headerShown: false,
+                        title: 'Registration',
+                        headerStyle: {
+                          backgroundColor: '#9FE5FF',
+                        },
+                        headerTintColor: 'black',
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+                      }}
+
+                />
+
+                <Stack.Screen 
+                    name="reg_credential" 
+                    component={RegistrationPage2} 
+                    options={{
+                        headerShown: false,
+                        title: 'Registration',
+                        headerStyle: {
+                          backgroundColor: '#9FE5FF',
+                        },
+                        headerTintColor: 'black',
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+                      }}
+                />
+
+                <Stack.Screen 
+                    name="reg_bio" 
+                    component={RegistrationPage3} 
+                    options={{
+                        headerShown: false,
+                        title: 'Registration',
+                        headerStyle: {
+                          backgroundColor: '#9FE5FF',
+                        },
+                        headerTintColor: 'black',
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+                      }}
+                />
+
+                <Stack.Screen 
+                    name="reg_bio2" 
+                    component={RegistrationPage4} 
+                    options={{
+                        headerShown: false,
+                        title: 'Registration',
                         headerStyle: {
                           backgroundColor: '#9FE5FF',
                         },

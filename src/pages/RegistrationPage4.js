@@ -1,80 +1,105 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 
 // import Component
 import HeaderPage from '../components/HeaderPage'
 
-const RegistrationPage4 = () => {
+const RegistrationPage4 = (props) => {
+    const [userData, addUserData] = useState(props.route.params)
+    const [cnic, setCnic] = useState()
+    const [province, setProvince] = useState()
+    const [disrict, setDisrict] = useState()
+    const [tehsil, setTehsil] = useState()
+    const [address, setAddress] = useState()
     return (
-        <View style={styles.container}>
-            <HeaderPage title="Registration"/>
-            
-            <Text style={styles.instText}>
-                    Create your account in just few easy steps
-            </Text>
+        <ScrollView>
+            <View style={styles.container}>
+                <HeaderPage title="Registration"/>
+                
+                <Text style={styles.instText}>
+                        Create your account in just few easy steps
+                </Text>
 
-            <View style={styles.head_btn_div}>
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        CNIC <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='______-___________-__'
-                        keyboardType={"phone-pad"}
-                    />
+                <View style={styles.head_btn_div}>
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            CNIC <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            value={cnic}
+                            onChangeText = {(text)=>{setCnic(text)}}
+                            style={styles.loginField}
+                            placeholder='______-___________-__'
+                            keyboardType={"phone-pad"}
+                        />
+                    </View>
+
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            PROVINCES <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            value={province}
+                            onChangeText = {(text)=>{setProvince(text)}}
+                            style={styles.loginField}
+                            placeholder='Enter Province here...'
+                        />
+                    </View>
+
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            DISTRICT <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            value={disrict}
+                            onChangeText = {(text)=>{setDisrict(text)}}
+                            style={styles.loginField}
+                            placeholder='Enter District here...'
+                        />
+                    </View>
+
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            TEHSIL <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            value={tehsil}
+                            onChangeText = {(text)=>{setTehsil(text)}}
+                            style={styles.loginField}
+                            placeholder='Enter Tehsil here...'
+                        />
+                    </View>
+
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            ADDRESS <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            value={address}
+                            onChangeText = {(text)=>{setAddress(text)}}
+                            style={styles.loginField}
+                            placeholder='Enter Address here...'
+                        />
+                    </View>
                 </View>
 
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        PROVINCES <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter Province here...'
-                    />
+                <View style={styles.btnLoc}>
+                    <TouchableOpacity 
+                        onPress={()=>{
+                            cnic !== undefined 
+                            &&  alert('Successfully Registered!')
+                                console.log(userData)
+                                props.navigation.navigate('login')
+                        }}
+                        style={styles.sinBtn}>
+                        <Text style={styles.btn_sigin}>
+                            FINISH
+                        </Text>
+                    </TouchableOpacity>
                 </View>
 
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        DISTRICT <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter District here...'
-                    />
-                </View>
-
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        TEHSIL <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter Tehsil here...'
-                    />
-                </View>
-
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        ADDRESS <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter Address here...'
-                    />
-                </View>
             </View>
-
-            <View style={styles.btnLoc}>
-                <TouchableOpacity style={styles.sinBtn}>
-                    <Text style={styles.btn_sigin}>
-                        FINISH
-                    </Text>
-                </TouchableOpacity>
-            </View>
-
-        </View>
+        </ScrollView>
     )
 }
 

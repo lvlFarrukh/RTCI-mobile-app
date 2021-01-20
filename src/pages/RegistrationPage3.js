@@ -1,77 +1,131 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 
 // import Component
 import HeaderPage from '../components/HeaderPage'
 
-const RegistrationPage3 = () => {
+const btnActive = {
+    backgroundColor: '#002B5F'
+}
+const errVal = {
+    borderWidth: 1,
+    borderColor: 'red'
+}
+
+const RegistrationPage3 = (props) => {
+
+    const [mBtn, mBtnChange] = useState(null)
+    const [fBtn, fBtnChange] = useState(null)
+    const [oBtn, oBtnChange] = useState(null)
+    const [userData, addUserData] = useState(props.route.params)
+    const [fullName, changeFN] = useState()
+    const [gender, changeGender] = useState()
+    const [DOB, changeDOB] = useState()
+
     return (
-        <View style={styles.container}>
-            <HeaderPage title="Registration"/>
-            
-            <Text style={styles.instText}>
-                    Create your account in just few easy steps
-            </Text>
+        <ScrollView>
+            <View style={styles.container}>
+                <HeaderPage title="Registration"/>
+                
+                <Text style={styles.instText}>
+                        Create your account in just few easy steps
+                </Text>
 
-            <View style={styles.head_btn_div}>
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        FULL NAME <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='Enter your name...'
-                    />
-                </View>
-
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        PROVINCES <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <View style={styles.genderBtn}>
-                        <TouchableOpacity style={styles.gBtn1}>
-                            <Text style={styles.btn_sigin}>
-                                MALE
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={styles.gBtn2}>
-                            <Text style={styles.btn_sigin}>
-                                FEMALE
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={styles.gBtn3}>
-                            <Text style={styles.btn_sigin}>
-                                OTHER
-                            </Text>
-                        </TouchableOpacity>
-
+                <View style={styles.head_btn_div}>
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            FULL NAME <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            style={styles.loginField}
+                            placeholder='Enter your name...'
+                            onChangeText={(text)=> {changeFN(text)}}
+                        />
                     </View>
+
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            PROVINCES <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <View style={styles.genderBtn}>
+                            <TouchableOpacity 
+                                onPress={()=>{
+                                    mBtn === null 
+                                    &&  mBtnChange(btnActive) 
+                                        fBtnChange(null)
+                                        oBtnChange(null)
+                                        changeGender('Male')
+
+                                }} 
+                                style={[styles.gBtn1, mBtn]}
+                            >
+                                <Text style={styles.btn_sigin}>
+                                    MALE
+                                </Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity 
+                                onPress={()=>{
+                                    fBtn === null 
+                                    &&  mBtnChange(null) 
+                                        fBtnChange(btnActive)
+                                        oBtnChange(null)
+                                        changeGender('Female')
+                                }} 
+                                style={[styles.gBtn2, fBtn]}
+                            >
+                                <Text style={styles.btn_sigin}>
+                                    FEMALE
+                                </Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity 
+                                onPress={()=>{
+                                    oBtn === null 
+                                    &&  mBtnChange(null) 
+                                        fBtnChange(null)
+                                        oBtnChange(btnActive)
+                                        changeGender('Other')
+                                }} 
+                                style={[styles.gBtn3, oBtn]}
+                            >
+                                <Text style={styles.btn_sigin}>
+                                    OTHER
+                                </Text>
+                            </TouchableOpacity>
+
+                        </View>
+                    </View>
+
+                    <View style={styles.mg20}>
+                        <Text style={styles.label}>
+                            DATE OF BIRTH <Text style={styles.colRed}>*</Text>
+                        </Text>
+                        <TextInput
+                            style={styles.loginField}
+                            placeholder='DD - MM - YY'
+                            keyboardType={"decimal-pad"}
+                            onChangeText={(text)=> {changeDOB(text)}}
+                        />
+                    </View>
+
                 </View>
 
-                <View style={styles.mg20}>
-                    <Text style={styles.label}>
-                        DATE OF BIRTH <Text style={styles.colRed}>*</Text>
-                    </Text>
-                    <TextInput
-                        style={styles.loginField}
-                        placeholder='DD - MM - YY'
-                        keyboardType={"decimal-pad"}
-                    />
+                <View style={styles.btnLoc}>
+                    <TouchableOpacity 
+                        onPress={() =>{
+                            props.navigation.navigate('reg_bio2', {...userData, fullName: fullName, gender: gender, DOB: DOB})
+                        }} 
+                        style={styles.sinBtn}
+                        >
+                        <Text style={styles.btn_sigin}>
+                            NEXT
+                        </Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>
-
-            <View style={styles.btnLoc}>
-                <TouchableOpacity style={styles.sinBtn}>
-                    <Text style={styles.btn_sigin}>
-                        NEXT
-                    </Text>
-                </TouchableOpacity>
-            </View>
-
-        </View>
+        </ScrollView>
     )
 }
 
@@ -141,21 +195,20 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     gBtn1: {
-        backgroundColor: '#002B5F',
+        backgroundColor: 'white',
         padding: 5,
         width: 105,
-        height: 40,
+        height: 35,
         borderBottomLeftRadius: 20,
         borderTopLeftRadius: 20,
     },
     gBtn2: {
-        backgroundColor: '#002B5F',
+        backgroundColor: 'white',
         padding: 5,
         width: 105,
     },
     gBtn3: {
-        backgroundColor: '#002B5F',
-        // backgroundColor: 'lightgray',
+        backgroundColor: 'white',
         padding: 5,
         width: 105,
         borderBottomRightRadius: 20,
