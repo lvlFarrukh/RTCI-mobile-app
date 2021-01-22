@@ -10,6 +10,7 @@ import RegistrationPage1 from '../pages/RegistrationPage1'
 import RegistrationPage2 from '../pages/RegistrationPage2'
 import RegistrationPage3 from '../pages/RegistrationPage3'
 import RegistrationPage4 from '../pages/RegistrationPage4'
+import Home from '../pages/Home'
 
 const Stack = createStackNavigator()
 
@@ -17,6 +18,25 @@ const Navigation = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen 
+                    name="Home" 
+                    component={Home} 
+                    options={{
+                        // headerShown: false,
+                        title: 'Home',
+                        headerStyle: {
+                          backgroundColor: '#9FE5FF',
+                        },
+                        headerTintColor: '#002B5F',
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                          alignSelf: 'center',
+                          fontSize: 25
+                        },
+                    }}
+
+                />
+
                 <Stack.Screen 
                     name="Login" 
                     component={Login} 

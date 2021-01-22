@@ -1,6 +1,10 @@
 import React, {useState} from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 
+const errVal = {
+    borderWidth: 1,
+    borderColor: 'red'
+}
 // import Component
 import HeaderPage from '../components/HeaderPage'
 
@@ -11,6 +15,8 @@ const RegistrationPage4 = (props) => {
     const [disrict, setDisrict] = useState()
     const [tehsil, setTehsil] = useState()
     const [address, setAddress] = useState()
+    const [cnicAct, setCnicAct] = useState(null)
+
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -28,7 +34,7 @@ const RegistrationPage4 = (props) => {
                         <TextInput
                             value={cnic}
                             onChangeText = {(text)=>{setCnic(text)}}
-                            style={styles.loginField}
+                            style={[styles.loginField, cnicAct]}
                             placeholder='______-___________-__'
                             keyboardType={"phone-pad"}
                         />
@@ -86,10 +92,13 @@ const RegistrationPage4 = (props) => {
                 <View style={styles.btnLoc}>
                     <TouchableOpacity 
                         onPress={()=>{
-                            cnic !== undefined 
-                            &&  alert('Successfully Registered!')
-                                console.log(userData)
-                                props.navigation.navigate('login')
+                            if (cnic === undefined){
+                                setCnicAct(errVal)
+                            }
+                            else {
+                                alert('Register Successfully!')
+                                props.navigation.navigate('Login')
+                            } 
                         }}
                         style={styles.sinBtn}>
                         <Text style={styles.btn_sigin}>

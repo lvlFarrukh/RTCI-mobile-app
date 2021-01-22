@@ -95,23 +95,23 @@ const styles = StyleSheet.create({
         textAlign: 'center', 
         fontSize: 12,
         marginTop: -10
-      },
-      sinBtn: {
+    },
+    sinBtn: {
         backgroundColor: '#002B5F',
         width: 140,
-        height: 40,
+        height: 35,
         borderRadius: 20,
         justifyContent: 'center'
-      },
-      btn_sigin: {
+    },
+    btn_sigin: {
         color: '#9FE5FF',
         fontSize: 18,
         fontWeight: 'bold',
         alignSelf: 'center',
         alignContent: 'center'
-      },
-      btnLoc: {
-        marginTop: 100,
+    },
+    btnLoc: {
+        marginTop: 150,
         alignItems: 'center',
         margin: 20
     }
