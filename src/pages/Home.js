@@ -5,7 +5,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import BottomNavigator from '../components/BottomNavigator'
 
-const Home = () => {
+const Home = (props) => {
     useEffect(() => {
         SplashScreen.hide()
     }, [])
@@ -25,7 +25,13 @@ const Home = () => {
                     </View>
 
                     <View style={styles.actions}>
-                        <TouchableOpacity activeOpacity={0.7} style={styles.actionBtn}>
+                        <TouchableOpacity 
+                            onPress={() =>{
+                                props.navigation.navigate('complainStatus')
+                            }}
+                            activeOpacity={0.7} 
+                            style={styles.actionBtn}>
+                            
                             <Text style={styles.actionTxt}>
                                 For Complain Status
                             </Text>
@@ -43,7 +49,7 @@ const Home = () => {
                 </TouchableOpacity>
             </View>
 
-            <BottomNavigator />
+            <BottomNavigator nav = {props.navigation}/>
         </View>
     )
 }

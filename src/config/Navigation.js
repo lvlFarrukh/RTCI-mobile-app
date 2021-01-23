@@ -11,6 +11,8 @@ import RegistrationPage2 from '../pages/RegistrationPage2'
 import RegistrationPage3 from '../pages/RegistrationPage3'
 import RegistrationPage4 from '../pages/RegistrationPage4'
 import Home from '../pages/Home'
+import Complainstatus from '../pages/Complainstatus'
+import Profile from '../pages/Profile'
 
 const Stack = createStackNavigator()
 
@@ -118,6 +120,36 @@ const Navigation = () => {
                         },
                       }}
 
+                />
+
+                <Stack.Screen 
+                    name="complainStatus" 
+                    component={Complainstatus} 
+                    options={{
+                        title: 'Status',
+                        headerStyle: {
+                          backgroundColor: '#9FE5FF',
+                      },
+                        headerTintColor: 'black',
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                      },
+                    }}
+                />
+
+                <Stack.Screen 
+                    name="profile" 
+                    component={Profile} 
+                    options={{
+                        title: 'My Profile',
+                        headerStyle: {
+                          backgroundColor: '#9FE5FF',
+                      },
+                        headerTintColor: 'black',
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                      },
+                    }}
                 />
 
             </Stack.Navigator>
