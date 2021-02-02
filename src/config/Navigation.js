@@ -13,6 +13,7 @@ import RegistrationPage4 from '../pages/RegistrationPage4'
 import Home from '../pages/Home'
 import Complainstatus from '../pages/Complainstatus'
 import Profile from '../pages/Profile'
+import UploadPage from '../pages/UploadPage'
 
 const Stack = createStackNavigator()
 
@@ -151,6 +152,22 @@ const Navigation = () => {
                       },
                     }}
                 />
+
+                <Stack.Screen 
+                    name="Upload Video" 
+                    component={UploadPage} 
+                    options={{
+                        title: 'Upload',
+                        headerStyle: {
+                          backgroundColor: '#002B5F',
+                      },
+                        headerTintColor: 'white',
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                      },
+                    }}
+                />
+                
 
             </Stack.Navigator>
         </NavigationContainer>
