@@ -45,7 +45,7 @@ const RegistrationPage3 = (props) => {
 
                     <View style={styles.mg20}>
                         <Text style={styles.label}>
-                            PROVINCES <Text style={styles.colRed}>*</Text>
+                            GENDER <Text style={styles.colRed}>*</Text>
                         </Text>
                         <View style={styles.genderBtn}>
                             <TouchableOpacity 

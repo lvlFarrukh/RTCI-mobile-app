@@ -5,7 +5,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import BottomNavigator from '../components/BottomNavigator'
 
-const Complainstatus = () => {
+const Complainstatus = (props) => {
     return (
         <View style={{flex: 1}}>
 
@@ -36,141 +36,9 @@ const Complainstatus = () => {
                     </View>
                 </View>
 
-                <View style={styles.actions}>
-                    <View style={styles.actionBtn}>
-                        <View style={{flex: 5, justifyContent: 'center'}}>
-                            <Text style={styles.actionTxt}>
-                                Complain No: 
-                            </Text>
-                            <Text style={styles.actionTxt}>
-                                Status: 
-                            </Text>
-                        </View>
-
-                        <TouchableOpacity style={styles.detailBtn}>
-                            <Text style={styles.detailBtnTxt}>
-                                Detail
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
-                <View style={styles.actions}>
-                    <View style={styles.actionBtn}>
-                        <View style={{flex: 5, justifyContent: 'center'}}>
-                            <Text style={styles.actionTxt}>
-                                Complain No: 
-                            </Text>
-                            <Text style={styles.actionTxt}>
-                                Status: 
-                            </Text>
-                        </View>
-
-                        <TouchableOpacity style={styles.detailBtn}>
-                            <Text style={styles.detailBtnTxt}>
-                                Detail
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
-                <View style={styles.actions}>
-                    <View style={styles.actionBtn}>
-                        <View style={{flex: 5, justifyContent: 'center'}}>
-                            <Text style={styles.actionTxt}>
-                                Complain No: 
-                            </Text>
-                            <Text style={styles.actionTxt}>
-                                Status: 
-                            </Text>
-                        </View>
-
-                        <TouchableOpacity style={styles.detailBtn}>
-                            <Text style={styles.detailBtnTxt}>
-                                Detail
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
-                <View style={styles.actions}>
-                    <View style={styles.actionBtn}>
-                        <View style={{flex: 5, justifyContent: 'center'}}>
-                            <Text style={styles.actionTxt}>
-                                Complain No: 
-                            </Text>
-                            <Text style={styles.actionTxt}>
-                                Status: 
-                            </Text>
-                        </View>
-
-                        <TouchableOpacity style={styles.detailBtn}>
-                            <Text style={styles.detailBtnTxt}>
-                                Detail
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
-                <View style={styles.actions}>
-                    <View style={styles.actionBtn}>
-                        <View style={{flex: 5, justifyContent: 'center'}}>
-                            <Text style={styles.actionTxt}>
-                                Complain No: 
-                            </Text>
-                            <Text style={styles.actionTxt}>
-                                Status: 
-                            </Text>
-                        </View>
-
-                        <TouchableOpacity style={styles.detailBtn}>
-                            <Text style={styles.detailBtnTxt}>
-                                Detail
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
-                <View style={styles.actions}>
-                    <View style={styles.actionBtn}>
-                        <View style={{flex: 5, justifyContent: 'center'}}>
-                            <Text style={styles.actionTxt}>
-                                Complain No: 
-                            </Text>
-                            <Text style={styles.actionTxt}>
-                                Status: 
-                            </Text>
-                        </View>
-
-                        <TouchableOpacity style={styles.detailBtn}>
-                            <Text style={styles.detailBtnTxt}>
-                                Detail
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
-                <View style={styles.actions}>
-                    <View style={styles.actionBtn}>
-                        <View style={{flex: 5, justifyContent: 'center'}}>
-                            <Text style={styles.actionTxt}>
-                                Complain No: 
-                            </Text>
-                            <Text style={styles.actionTxt}>
-                                Status: 
-                            </Text>
-                        </View>
-
-                        <TouchableOpacity style={styles.detailBtn}>
-                            <Text style={styles.detailBtnTxt}>
-                                Detail
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
             </ScrollView>
 
-            <BottomNavigator />
+            <BottomNavigator pageState={2} nav = {props.navigation}/>
         </View>
     )
 }
@@ -207,7 +75,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.32,
         shadowRadius: 5.46,
         
-        elevation: 9,
+        elevation: 2,
         justifyContent: 'center',
         paddingLeft: 10,
         flexDirection: 'row'

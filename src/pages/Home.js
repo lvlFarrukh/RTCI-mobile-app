@@ -40,16 +40,52 @@ const Home = (props) => {
                             </Text>
                         </TouchableOpacity>
                     </View>
+
+                    <View style={styles.actions}>
+                        <TouchableOpacity 
+                            onPress={() =>{
+                                props.navigation.navigate('complainStatus')
+                            }}
+                            activeOpacity={0.7} 
+                            style={styles.actionBtn}>
+                            
+                            <Text style={styles.actionTxt}>
+                                For Complain Status
+                            </Text>
+                            <Text style={styles.actionTxt}>
+                                Click Here!
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.actions}>
+                        <TouchableOpacity 
+                            onPress={() =>{
+                                props.navigation.navigate('complainStatus')
+                            }}
+                            activeOpacity={0.7} 
+                            style={styles.actionBtn}>
+                            
+                            <Text style={styles.actionTxt}>
+                                For Complain Status
+                            </Text>
+                            <Text style={styles.actionTxt}>
+                                Click Here!
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                   
                 </View>
             </ScrollView>
 
             <View style={styles.upload}>
                 <TouchableOpacity style={styles.uploadBtn}>
-                    <FontAwesome5 style={styles.btnTxt} name={'plus'} color={'cyan'} size={30} solid/>
+                    <FontAwesome5 style={styles.btnTxt} name={'plus'} color={'cyan'} size={22} solid/>
                 </TouchableOpacity>
             </View>
 
-            <BottomNavigator nav = {props.navigation}/>
+            <BottomNavigator pageState={0} nav = {props.navigation}/>
         </View>
     )
 }
@@ -68,7 +104,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     name: {
-        fontSize: 32,
+        fontSize: 30,
         fontWeight: 'bold',
         color: '#002B5F'
     },
@@ -80,18 +116,18 @@ const styles = StyleSheet.create({
     actionBtn: {
         backgroundColor: 'white',
         width: 310,
-        height: 100,
-        borderRadius: 15,
+        height: 80,
+        borderRadius: 10,
         shadowColor: "#000",
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 4,
         },
-        shadowOpacity: 0.32,
+        shadowOpacity: 1,
         shadowRadius: 5.46,
         
-        elevation: 9,
+        elevation: 2,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -102,10 +138,10 @@ const styles = StyleSheet.create({
     }, 
     uploadBtn: {
         // margin: 30,
-        paddingTop: 17,
-        paddingLeft: 19,
-        height: 65,
-        width: 65,
+        paddingTop: 14,
+        paddingLeft: 16,
+        height: 50,
+        width: 50,
         borderRadius: 50,
         shadowColor: "#000",
         shadowOffset: {
@@ -122,7 +158,7 @@ const styles = StyleSheet.create({
         bottom: 15,
     },
     actionTxt: {
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: 'bold',
         color: 'gray'
     }

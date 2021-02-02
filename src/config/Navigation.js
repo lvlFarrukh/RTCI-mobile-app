@@ -27,9 +27,9 @@ const Navigation = () => {
                         // headerShown: false,
                         title: 'Home',
                         headerStyle: {
-                          backgroundColor: '#9FE5FF',
+                          backgroundColor: '#002B5F',
                         },
-                        headerTintColor: '#002B5F',
+                        headerTintColor: 'white',
                         headerTitleStyle: {
                           fontWeight: 'bold',
                           alignSelf: 'center',
@@ -128,9 +128,9 @@ const Navigation = () => {
                     options={{
                         title: 'Status',
                         headerStyle: {
-                          backgroundColor: '#9FE5FF',
+                          backgroundColor: '#002B5F',
                       },
-                        headerTintColor: 'black',
+                        headerTintColor: 'white',
                         headerTitleStyle: {
                           fontWeight: 'bold',
                       },
@@ -143,9 +143,9 @@ const Navigation = () => {
                     options={{
                         title: 'My Profile',
                         headerStyle: {
-                          backgroundColor: '#9FE5FF',
+                          backgroundColor: '#002B5F',
                       },
-                        headerTintColor: 'black',
+                        headerTintColor: 'white',
                         headerTitleStyle: {
                           fontWeight: 'bold',
                       },

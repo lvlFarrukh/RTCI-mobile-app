@@ -1,30 +1,38 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity,} from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const BottomNavigator = (props) => {
+    const [pageState, setPageState] = useState(props.pageState) 
     return (
         <View style={styles.bottomHead}>
             <View style={styles.bottomNav}>
                 <TouchableOpacity 
                     onPress={()=>{
-
-                    }}>
-                        <FontAwesome5 name={'home'} color={'white'} size={30}/>
+                        props.nav.navigate('Home')
+                }}>
+                        <FontAwesome5 name={'home'} color={pageState === 0 ? '#9FE5FF' : 'white'} size={25}/>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     onPress={()=>{
                             
                     }}>
-                        <FontAwesome5 name={'upload'} color={'#9FE5FF'} size={30}/>
+                        <FontAwesome5 name={'upload'} color={'white'} size={25}/>
                 </TouchableOpacity>
                 
                 <TouchableOpacity 
                     onPress={()=>{
-                        console.log(props.nav.navigate('profile'))
+                        props.nav.navigate('complainStatus')
                     }}>
-                        <FontAwesome5 name={'user'} color={'#9FE5FF'} size={30} solid/>
+                        <FontAwesome5 name={'th-list'} color={pageState === 2 ? '#9FE5FF' : 'white'} size={25} solid/>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                    onPress={()=>{
+                        props.nav.navigate('profile')
+                    }}>
+                        <FontAwesome5 name={'user'} color={pageState === 3 ? '#9FE5FF' : 'white'} size={25} solid/>
                 </TouchableOpacity>
             </View>
         </View>
