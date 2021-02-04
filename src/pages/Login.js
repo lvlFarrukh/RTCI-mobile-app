@@ -4,6 +4,9 @@ import SplashScreen from 'react-native-splash-screen'
 
 // import components
 import HeaderPage from '../components/HeaderPage'
+import LoginEmail from '../components/LoginEmail'
+import LoginCnic from '../components/LoginCnic'
+import LoginAnon from '../components/LoginAnon'
 
 const btn_active = {
     borderColor: '#002B5F',
@@ -18,6 +21,8 @@ const Login = (props) => {
     const [cnicBtn, cnicBtnChange] = useState(btn_active)
     const [emailBtn, emailBtnChange] = useState(null)
     const [anonBtn, anonBtnChange] = useState(null)
+
+    const [pageState, setPageState] = useState(0)
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -27,6 +32,7 @@ const Login = (props) => {
         <View style={styles.head_btn_div}>
           <TouchableOpacity
             onPress={()=>{
+              setPageState(0)
               cnicBtn === null 
               &&  anonBtnChange(null) 
                   cnicBtnChange(btn_active)
@@ -42,6 +48,7 @@ const Login = (props) => {
 
           <TouchableOpacity 
             onPress={()=>{
+              setPageState(1)
               emailBtn === null 
               &&  anonBtnChange(null) 
                   cnicBtnChange(null)
@@ -57,6 +64,7 @@ const Login = (props) => {
 
           <TouchableOpacity 
             onPress={()=>{
+              setPageState(2)
               anonBtn === null 
               &&  anonBtnChange(btn_active) 
                   cnicBtnChange(null)
@@ -71,44 +79,12 @@ const Login = (props) => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.loginSec}>
+        {pageState === 0 && <LoginCnic/>}
+        {pageState === 1 && <LoginEmail/>}
+        {pageState === 2 && <LoginAnon/>}
 
-          <View>
-            <Text style={styles.label}>
-              CNIC#
-            </Text>
-            <TextInput
-              style={styles.loginField}
-              placeholder='________-____________-__'
-              keyboardType={"phone-pad"}
-            />
-          </View>
 
-          <View>
-            <Text style={styles.label}>
-              PASSWORD
-            </Text>
-            <TextInput
-              style={styles.loginField}
-              placeholder='Enter Password here..'
-              secureTextEntry={true}
-              inlineImageLeft='search_icon'
-            />
-          </View>
-
-          <Text style={styles.bottomTxt}>
-            Don't have an account? <Text onPress={() => props.navigation.navigate('register_number')} style={{color: '#002B5F'}}>REGISTER</Text>
-          </Text>
-          </View>
-
-          <View style={{alignItems: 'center', margin: 20}}>
-            <TouchableOpacity style={styles.sinBtn}>
-              <Text style={styles.btn_sigin}>
-                SIGN IN
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+      </View>
       </ScrollView>
     )
 }

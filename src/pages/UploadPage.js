@@ -1,9 +1,36 @@
-import React, {useState} from 'react'
-import { Text, View, StyleSheet, TextInput } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import React, {useState, useEffect} from 'react'
+import { Text, View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native'
 
-const UploadPage = () => {
+import BottomNavigator from '../components/BottomNavigator'
+
+import ImagePicker from 'react-native-image-crop-picker';
+
+
+const UploadPage = (props) => {
     const [description, setDescription] = useState()
+    const [videoBtn, setVideoBtn] = useState('Upload Video Here')
+    const [video, setVideo] = useState()
+
+    const uploadVideo = ()=> {
+        // const options = {
+        //     noData: true,
+        //     mediaType: 'photo'
+        // }
+        // launchImageLibrary(options, response => {
+        //     console.log("response", response)
+        //     setPhoto(response.uri)
+        // })
+        ImagePicker.openPicker({
+            mediaType: "video",
+          }).then((video) => {
+            setVideo(video)
+            setVideoBtn('Uploading Done!')
+          });
+    }
+
+    // let data = new FormData()
+    // console.log(data)
+
     return (
         <View style={styles.container}>
             <View style={styles.mainForm}>
@@ -26,22 +53,32 @@ const UploadPage = () => {
                             Upload Video 
                         </Text>
 
-                        <TouchableOpacity style={styles.UploadBtn}>
+                        <TouchableOpacity 
+                            onPress={()=> {
+                                uploadVideo()
+                            }}
+                            style={styles.UploadBtn}>
                             <Text style={styles.upTxt}>
-                                Upload Video Here
+                                {videoBtn}
                             </Text>
                         </TouchableOpacity>
                     </View>
 
                     <View>
-                        <TouchableOpacity style={styles.submitBtn}>
+                        <TouchableOpacity style={styles.submitBtn} >
                             <Text style={[styles.upTxt, {color: 'white'}]}>
                                 Upload
                             </Text>
                         </TouchableOpacity>
                     </View>
 
+                    <View>
+                        {/* { console.log(video.path) } */}
+                        
+                    </View>
+
             </View>
+            <BottomNavigator pageState={1} nav = {props.navigation}/>
         </View>
     )
 }

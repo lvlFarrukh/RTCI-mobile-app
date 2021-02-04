@@ -18,7 +18,7 @@ const BottomNavigator = (props) => {
                     onPress={()=>{
                         props.nav.navigate('Upload Video')
                     }}>
-                        <FontAwesome5 name={'upload'} color={'white'} size={25}/>
+                        <FontAwesome5 name={'upload'} color={pageState === 1 ? '#9FE5FF' : 'white'} size={25}/>
                 </TouchableOpacity>
                 
                 <TouchableOpacity 
